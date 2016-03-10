@@ -1,6 +1,6 @@
 {
   "name": "ncu-report",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A utility that formats the output of ncu in markdown format",
   "main": "index.js",
   "scripts": {
