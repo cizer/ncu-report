@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cizer/ncu-report.svg?branch=master)](https://travis-ci.org/cizer/ncu-report)
+
 ncu-report
 ==========
 A report generator that produces a table showing which packages require updating. The report is generated in markdown format and can be integrated into your build.
