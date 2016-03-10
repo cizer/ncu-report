@@ -4,17 +4,16 @@ A report generator that produces a table showing which packages require updating
 
 Installation
 ------------
-```sh
+```
 npm install -g ncu-report
 ```
 
 Usage
 -----
-```sh
+```
 $ ncu-report
 Report generated in ./ncu-report/ncu-report.md
 ```
-
 Example Output
 --------------
 | Package | Current | Latest | Status |
