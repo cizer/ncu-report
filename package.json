@@ -2,12 +2,12 @@
   "name": "ncu-report",
   "version": "0.0.4",
   "description": "A utility that formats the output of ncu in markdown format",
-  "main": "index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "./node_modules/jasmine-node/bin/jasmine-node spec"
   },
   "bin": {
-    "ncu-report": "./index.js"
+    "ncu-report": "./lib/index.js"
   },
   "author": "Richie Mackay",
   "license": "ISC",

@@ -1,5 +1,5 @@
 #!javascript
-var parser = require("../packageParser");
+var parser = require("../lib/packageParser");
 
 describe("parse", function () {
     var result, testVersionType = "BLAH";
