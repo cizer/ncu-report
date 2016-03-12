@@ -12,6 +12,7 @@ npm install -g ncu-report
 
 Usage
 -----
+ncu-report looks for the package.json file in the current directory.
 ```
 $ ncu-report
 Report generated in ./ncu-report/ncu-report.md
