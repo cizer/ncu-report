@@ -1,5 +1,5 @@
 #!javascript
-var index = require("../index");
+var index = require("../lib/index");
 
 describe("test program flow",function(){
 

@@ -1,5 +1,5 @@
 #!javascript
-var generator = require("../tableGenerator");
+var generator = require("../lib/tableGenerator");
 
 describe("format", function () {
     var result;
