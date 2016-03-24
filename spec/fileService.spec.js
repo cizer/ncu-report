@@ -14,7 +14,13 @@ ddescribe("write", function () {
             console.log(dir);
             return true;
         };
-        service.write();
+        fsStub.createWriteStream = function () {
+            return {
+                on: function () {},
+                end: function () {}
+            };
+        };
+        service.write([]);
     });
 
     it("", function () {
