@@ -17,7 +17,7 @@ describe("acceptance test", function () {
                 reportService.generate(config, TEST_INPUT);
                 setTimeout(function () {
                     runOnce = true
-                }, 100)
+                }, 500)
             });
 
             waitsFor(function () {
