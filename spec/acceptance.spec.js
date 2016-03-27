@@ -8,23 +8,25 @@ describe("acceptance test", function () {
     }, report, reportLines;
 
     var TEST_INPUT = {'test1': '1.1', 'test4': '1.4'};
+    var runOnce = false;
 
     beforeEach(function () {
-        var carryOn = false;
-        runs(function () {
+        if(!runOnce) {
+            runs(function () {
 
-            reportService.generate(config, TEST_INPUT);
-            setTimeout(function () {
-                carryOn = true
-            }, 50)
-        });
+                reportService.generate(config, TEST_INPUT);
+                setTimeout(function () {
+                    runOnce = true
+                }, 100)
+            });
 
-        waitsFor(function () {
-            return carryOn;
-        });
+            waitsFor(function () {
+                return runOnce;
+            });
 
-        report = fs.readFileSync('./ncu-report/ncu-report.md', 'utf8');
-        reportLines = report.split('\n');
+            report = fs.readFileSync('./ncu-report/ncu-report.md', 'utf8');
+            reportLines = report.split('\n');
+        }
     });
 
     describe("the report", function(){
