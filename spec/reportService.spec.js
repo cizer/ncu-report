@@ -5,23 +5,38 @@ describe("reportService.spec.js", function () {
         packageParserMock = {}, tableGeneratorMock = {},
         fileServiceMock = {}, fsMock = {},
         service, testPackageData,
+        MOCK_DEPENDENCIES = [{
+            dep1: '0.1'
+        }],
+        MOCK_DEVDEPENDENCIES = [{
+            devdep1: '0.2'
+        }],
+        MOCK_PARSED_DEPENDENCIES = [{name: 'alpha'}, {name: 'gamma'}],
+        MOCK_PARSED_DEVDEPENDENCIES = [{name: 'beta'}],
         MOCK_TABLE_DATA = ['TEST TABLE'],
-        MOCK_MERGED_LIST = "MERGED LIST";
+        MOCK_MERGED_LIST = "MERGED LIST",
+        MOCK_UPGRADED_LIST = "UPGRADED LIST",
+        TEST_INPUT;
 
     beforeEach(function () {
-
         testPackageData = {
-            dependencies: {
-                dep1: '0.1'
-            },
-            devDependencies: {
-                devdep1: '0.1'
-            }
+            dependencies: MOCK_DEPENDENCIES,
+            devDependencies: MOCK_DEVDEPENDENCIES
         };
 
         testPackageDataString = JSON.stringify(testPackageData);
         packageParserMock = {
-            parse: jasmine.createSpy().andReturn([1]),
+            parse: jasmine.createSpy().andCallFake(function (data, dataType) {
+                if (JSON.stringify(data) === JSON.stringify(MOCK_DEPENDENCIES)) {
+                    return MOCK_PARSED_DEPENDENCIES;
+                }
+                if (JSON.stringify(data) === JSON.stringify(MOCK_DEVDEPENDENCIES)) {
+                    return MOCK_PARSED_DEVDEPENDENCIES;
+                }
+                if (data === TEST_INPUT) {
+                    return MOCK_UPGRADED_LIST;
+                }
+            }),
             merge: jasmine.createSpy().andReturn(MOCK_MERGED_LIST)
         };
         tableGeneratorMock = {
@@ -43,7 +58,7 @@ describe("reportService.spec.js", function () {
     });
 
     describe("generate()", function () {
-        var TEST_INPUT = {
+        TEST_INPUT = {
             test1: 1.1,
             test2: 1.2
         };
@@ -57,10 +72,10 @@ describe("reportService.spec.js", function () {
                 .toHaveBeenCalledWith(mockConfig.packageFile, 'utf8');
         });
 
-        describe("on parsing existing package data for devDependencies", function () {
+        describe("on parsing existing package data for dependencies", function () {
             it("should pass correct data for parsing", function () {
                 expect(packageParserMock.parse.argsForCall[0][0])
-                    .toEqual(testPackageData.devDependencies);
+                    .toEqual(MOCK_DEPENDENCIES);
             });
 
             it("should parse for current packages", function () {
@@ -69,10 +84,10 @@ describe("reportService.spec.js", function () {
             });
         });
 
-        describe("on parsing existing package data for dependencies", function () {
+        describe("on parsing existing package data for devDependencies", function () {
             it("should pass correct data for parsing", function () {
                 expect(packageParserMock.parse.argsForCall[1][0])
-                    .toEqual(testPackageData.dependencies);
+                    .toEqual(MOCK_DEVDEPENDENCIES);
             });
 
             it("should parse for current packages", function () {
@@ -94,8 +109,8 @@ describe("reportService.spec.js", function () {
         });
 
         describe("on merging package data", function () {
-            it("should call merge with expected parameters", function () {
-                expect(packageParserMock.merge).toHaveBeenCalledWith([1, 1], [1]);
+            it("should call merge with expected parameters (sorted)", function () {
+                expect(packageParserMock.merge).toHaveBeenCalledWith([{name: 'alpha'}, {name: 'beta'}, {name: 'gamma'}], MOCK_UPGRADED_LIST);
             });
         });
 
