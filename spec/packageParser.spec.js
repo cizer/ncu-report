@@ -1,9 +1,13 @@
 #!javascript
+
 var parser = require("../lib/packageParser");
 
 describe("parse", function () {
     var result, testVersionType = "BLAH";
-    var testInput = {package1: 1, package2: 2};
+    var testInput = {
+        package1: 1,
+        package2: 2
+    };
 
     beforeEach(function () {
         result = parser.parse(testInput, testVersionType);
@@ -20,13 +24,29 @@ describe("parse", function () {
     it("should set current version to undefined", function () {
         expect(result[0].version.current).toBeUndefined();
     });
+
 });
 
 describe("merge", function () {
     var result;
-    var current = [{name: "package1", version: {current: 1}},
-        {name: "latest", version: {current: 10}}];
-    var upgraded = [{name: "package1", version: {new: 2}}];
+    var current = [{
+            name: "package1",
+            version: {
+                current: 1
+            }
+        },
+        {
+            name: "latest",
+            version: {
+                current: 10
+            }
+        }];
+    var upgraded = [{
+        name: "package1",
+        version: {
+            new: 2
+        }
+    }];
 
     beforeEach(function () {
         result = parser.merge(current, upgraded);
@@ -41,6 +61,7 @@ describe("merge", function () {
         it("in second position", function () {
             expect(result[1].name).toBe(current[1].name);
         });
+
     });
 
     it("should preserve current version", function () {
@@ -55,4 +76,5 @@ describe("merge", function () {
     it("should set new version to current if not specified", function () {
         expect(result[1].version.new).toBe(current[1].version.current);
     });
+
 });

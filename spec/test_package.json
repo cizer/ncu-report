@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "test3": "0.3",
+    "test2": "0.2"
+  },
+  "devDependencies": {
+    "test4": "0.4",
+    "test1": "0.1"
+  }
+}

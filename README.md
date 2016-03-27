@@ -48,4 +48,4 @@ Example Output
 | phantomjs-prebuilt | 2.1.3 | 2.1.5 | OUTDATED |
 | protractor-screenshot-reporter | 0.0.5 | 0.0.5 | OK |
 | selenium-server-standalone-jar | 2.43.1 | 2.52.0 | OUTDATED |
-
+<sup><sub>Report generated on: Wed Mar 23 2016 22:13:54 GMT+0000 (GMT)<sub><sup>
