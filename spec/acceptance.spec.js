@@ -5,31 +5,19 @@ describe("acceptance test", function () {
     var fs = require('fs');
     var config = {
         packageFile: "./spec/test_package.json"
-    }, report, reportLines = [];
+    }, reportLines = [];
 
     var TEST_INPUT = {'test1': '1.1', 'test4': '1.4'};
     var runOnce = false;
 
     beforeEach(function () {
         if(!runOnce) {
-            runs(function () {
-
-                reportService.generate(config, TEST_INPUT);
-                setTimeout(function () {
-                    runOnce = true
-                }, 500)
-            });
-
-            waitsFor(function () {
-                return runOnce;
-            });
-
-            report = fs.readFileSync(process.cwd() + '/ncu-report/ncu-report.md', 'utf8');
-            reportLines = report.split('\n');
+            reportLines = reportService.generate(config, TEST_INPUT);
+            runOnce = true;
         }
     });
 
-    describe("the report", function(){
+    describe("the report", function () {
 
         it("header", function () {
             expect(reportLines[0]).toBe("| Package | Current | Latest | Status |");
