@@ -5,7 +5,7 @@ var proxyquire = require('proxyquire'), fsMock = {}, fileMock,
         'fs': fsMock
     });
 
-ddescribe("write", function () {
+describe("write", function () {
 
     fsMock.mkdirSync = jasmine.createSpy();
     fileMock = {
