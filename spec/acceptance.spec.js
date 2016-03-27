@@ -5,7 +5,7 @@ describe("acceptance test", function () {
     var fs = require('fs');
     var config = {
         packageFile: "./spec/test_package.json"
-    }, report, reportLines;
+    }, report, reportLines = [];
 
     var TEST_INPUT = {'test1': '1.1', 'test4': '1.4'};
     var runOnce = false;
@@ -24,7 +24,7 @@ describe("acceptance test", function () {
                 return runOnce;
             });
 
-            report = fs.readFileSync('./ncu-report/ncu-report.md', 'utf8');
+            report = fs.readFileSync(process.cwd() + '/ncu-report/ncu-report.md', 'utf8');
             reportLines = report.split('\n');
         }
     });
