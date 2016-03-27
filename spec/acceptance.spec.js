@@ -16,14 +16,14 @@ describe("acceptance test", function () {
             reportService.generate(config, TEST_INPUT);
             setTimeout(function () {
                 carryOn = true
-            }, 500)
+            }, 50)
         });
 
         waitsFor(function () {
             return carryOn;
         });
 
-        report = fs.readFileSync(process.cwd() + '/ncu-report/ncu-report.md', 'utf8');
+        report = fs.readFileSync('./ncu-report/ncu-report.md', 'utf8');
         reportLines = report.split('\n');
     });
 
