@@ -16,6 +16,8 @@
     "npm-check-updates": "^2.5.8"
   },
   "devDependencies": {
+    "commander": "^2.9.0",
+    "npm-check-updates": "^2.6.1",
     "proxyquire": "^1.7.4"
   }
 }
