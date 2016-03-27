@@ -16,7 +16,7 @@ describe("acceptance test", function () {
             reportService.generate(config, TEST_INPUT);
             setTimeout(function () {
                 carryOn = true
-            }, 200)
+            }, 500)
         });
 
         waitsFor(function () {
