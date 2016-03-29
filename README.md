@@ -1,20 +1,17 @@
 [![npm stable version](https://img.shields.io/npm/v/ncu-report.svg?label=npm)](https://npmjs.org/package/ncu-report)
 [![Build Status](https://travis-ci.org/cizer/ncu-report.svg?branch=master)](https://travis-ci.org/cizer/ncu-report)
 
-ncu-report
-==========
+# ncu-report
 A report generator that produces a table showing which packages require updating. The report is generated in markdown format and can be integrated into your build.
 
 This tool uses the output of the [npm-check-updates](https://github.com/tjunnone/npm-check-updates) project
 
-Installation
-------------
+## Installation
 ```
 npm install -g ncu-report
 ```
 
-Usage
------
+## Basic Usage
 ncu-report looks for the package.json file in the current directory.
 ```
 $ ncu-report
@@ -24,6 +21,17 @@ Report generated in ./ncu-report/ncu-report.md
 To specify input file e.g. bower dependencies.
 ````
 $ ncu-report -i bower.json
+````
+
+## Usage
+````
+Usage: ncu-report [options]
+
+Options:
+    -h, --help                   output usage information
+    -V, --version                output the version number
+    -i --packageFile <filename>  package file name
+    -o --outputFile <filename>   output file name
 ````
 
 Example Output

@@ -4,7 +4,8 @@ describe("acceptance test", function () {
     var reportService = require('../lib/reportService');
     var fs = require('fs');
     var config = {
-        packageFile: "./spec/test_package.json"
+        packageFile: "./spec/test_package.json",
+        outputFile: "./ncu-report/testoutput.md"
     }, reportLines = [];
 
     var TEST_INPUT = {'test1': '1.1', 'test4': '1.4'};
