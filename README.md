@@ -13,9 +13,9 @@ npm install -g ncu-report
 
 ## Basic Usage
 ncu-report looks for the package.json file in the current directory.
+Report is generated in the default output location ./ncu-report/ncu-report.md
 ```
 $ ncu-report
-Report generated in ./ncu-report/ncu-report.md
 ```
 
 To specify input file e.g. bower dependencies.
