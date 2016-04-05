@@ -18,9 +18,9 @@ Report is generated in the default output location ./ncu-report/ncu-report.md
 $ ncu-report
 ```
 
-To specify input file e.g. bower dependencies.
+To use bower package manager
 ````
-$ ncu-report -i bower.json
+$ ncu-report -m bower
 ````
 
 ## Usage
@@ -28,10 +28,12 @@ $ ncu-report -i bower.json
 Usage: ncu-report [options]
 
 Options:
-    -h, --help                   output usage information
-    -V, --version                output the version number
-    -i --packageFile <filename>  package file name
-    -o --outputFile <filename>   output file name
+  -h, --help                   output usage information
+  -V, --version                output the version number
+  -i --inputFile <filename>    package.json (default)
+  -m, --packageManager <name>  npm (default) | bower
+  -o --outputFile <filename>   ./ncu-report/ncu-report.md (default)
+  -v --verbose                 verbose
 ````
 
 Example Output
