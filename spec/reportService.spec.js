@@ -18,6 +18,9 @@ describe("reportService.spec.js", function() {
     MOCK_DEVDEPENDENCIES = [{
       devdep1: '0.2'
     }],
+    MOCK_INSTALLED = [{
+      dep1: '1.1'
+    }],
     MOCK_PARSED_DEPENDENCIES = [{
       name: 'alpha'
     }, {
@@ -26,10 +29,13 @@ describe("reportService.spec.js", function() {
     MOCK_PARSED_DEVDEPENDENCIES = [{
       name: 'beta'
     }],
+    MOCK_PARSED_INSTALLED = [{
+      name: 'delta'
+    }],
     MOCK_TABLE_DATA = ['TEST TABLE'],
     MOCK_MERGED_LIST = "MERGED LIST",
     MOCK_UPGRADED_LIST = "UPGRADED LIST",
-    TEST_INPUT;
+    MOCK_LATEST;
 
   beforeEach(function() {
     testPackageData = {
@@ -46,7 +52,10 @@ describe("reportService.spec.js", function() {
         if (JSON.stringify(data) === JSON.stringify(MOCK_DEVDEPENDENCIES)) {
           return MOCK_PARSED_DEVDEPENDENCIES;
         }
-        if (data === TEST_INPUT) {
+        if (JSON.stringify(data) === JSON.stringify(MOCK_INSTALLED)) {
+          return MOCK_PARSED_INSTALLED;
+        }
+        if (data === MOCK_LATEST) {
           return MOCK_UPGRADED_LIST;
         }
       }),
@@ -70,13 +79,13 @@ describe("reportService.spec.js", function() {
   });
 
   describe("generate()", function() {
-    TEST_INPUT = {
+    MOCK_LATEST = {
       test1: 1.1,
       test2: 1.2
     };
 
     beforeEach(function() {
-      service.generate(mockConfig, TEST_INPUT);
+      service.generate(mockConfig, MOCK_LATEST, MOCK_INSTALLED);
     });
 
     it("should call method to read file with correct parameters", function() {
@@ -108,27 +117,40 @@ describe("reportService.spec.js", function() {
       });
     });
 
-    describe("on parsing new package data from ncu", function() {
+    describe("on parsing installed package data from ncu", function() {
       it("should pass correct data for parsing", function() {
         expect(packageParserMock.parse.argsForCall[2][0])
-          .toEqual(TEST_INPUT);
+          .toEqual(MOCK_INSTALLED);
       });
 
       it("should parse for new packages", function() {
         expect(packageParserMock.parse.argsForCall[2][1])
+          .toEqual("installed");
+      });
+    });
+
+    describe("on parsing new package data from ncu", function() {
+      it("should pass correct data for parsing", function() {
+        expect(packageParserMock.parse.argsForCall[3][0])
+          .toEqual(MOCK_LATEST);
+      });
+
+      it("should parse for new packages", function() {
+        expect(packageParserMock.parse.argsForCall[3][1])
           .toEqual("new");
       });
     });
 
     describe("on merging package data", function() {
       it("should call merge with expected parameters (sorted)", function() {
-        expect(packageParserMock.merge).toHaveBeenCalledWith([{
+        expect(packageParserMock.merge.argsForCall[0][0])
+        .toEqual([{
           name: 'alpha'
         }, {
           name: 'beta'
         }, {
           name: 'gamma'
-        }], MOCK_UPGRADED_LIST);
+        }]);
       });
     });
 
