@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/cizer/ncu-report.svg?branch=master)](https://travis-ci.org/cizer/ncu-report)
 
 # ncu-report
-A report generator that produces a table showing which packages require updating. The report is generated in markdown format and can be integrated into your build.
+A report generator that produces a table showing which packages require updating. The report is generated in markdown (and optionally dokuwiki) format and can be integrated into your build.
 
 This tool uses the output of the [npm-check-updates](https://github.com/tjunnone/npm-check-updates) project
 
@@ -23,6 +23,16 @@ To use bower package manager
 $ ncu-report -m bower
 ````
 
+To output in dokuwiki format
+````
+$ ncu-report -f docuwiki
+````
+
+To output to alternative filename
+````
+$ ncu-report -o my-report.md
+````
+
 ## Usage
 ````
 Usage: ncu-report [options]
@@ -32,14 +42,15 @@ Options:
   -V, --version                output the version number
   -m, --packageManager <name>  npm (default) | bower
   -o --outputFile <filename>   ./ncu-report/ncu-report.md (default)
-  -v --verbose                 verbose
+  -f --format <name>           markdown (default) | dokuwiki
+  -v --verbose                 verbose˜
 ````
 
 Example Output
 --------------
 | Package | Current | Installed | Latest | Status |
 | :------ | ------: | --------: | -----: | :----: |
-| bluebird | ^3.0.5 | 3.3.4 | ^3.3.4 | OUTDATED |
+| bluebird | ^3.0.5 | 3.3.4 | ^3.3.5 | OUTDATED |
 | chai | ^3.4.1 | 3.5.0 | ^3.5.0 | OUTDATED |
 | chai-as-promised | ^5.1.0 | 5.3.0 | ^5.3.0 | OUTDATED |
 | chai-string | ^1.1.4 | 1.2.0 | ^1.2.0 | OUTDATED |
@@ -63,4 +74,4 @@ Example Output
 | should | ^7.1.1 | 7.1.1 | ^8.3.0 | OUTDATED |
 | spawn-please | ^0.1.0 | 0.1.0 | ^0.1.0 | OK |
 | update-notifier | ^0.5.0 | 0.5.0 | ^0.6.3 | OUTDATED |
-<sup><sub>Report generated on: Tue Apr 12 2016 19:51:03 GMT+0100 (BST)<sub><sup>
+<sup><sub>Report generated on: Tue Apr 12 2016 23:49:37 GMT+0100 (BST)<sub><sup>
