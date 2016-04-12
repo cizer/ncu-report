@@ -3,7 +3,8 @@
 describe("reportService.spec.js", function() {
   var mockConfig = {
       packageFile: "PACKAGEFILE",
-      outputFile: "OUTPUTFILE"
+      outputFile: "OUTPUTFILE",
+      format: 'MOCK_FORMAT'
     },
     proxyquire = require('proxyquire'),
     testPackageDataString,
@@ -156,7 +157,7 @@ describe("reportService.spec.js", function() {
 
     describe("on generating the table", function() {
       it("call format on mergedlist", function() {
-        expect(tableGeneratorMock.format).toHaveBeenCalledWith(MOCK_MERGED_LIST);
+        expect(tableGeneratorMock.format).toHaveBeenCalledWith(MOCK_MERGED_LIST, mockConfig.format);
       });
     });
 
