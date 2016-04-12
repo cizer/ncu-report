@@ -40,7 +40,7 @@ describe("format", function() {
       }, {
         name: "ok1",
         version: {
-          current: 4,
+          current: '^4',
           installed: 4
         }
       }]);
@@ -59,7 +59,7 @@ describe("format", function() {
     });
 
     it("returns valid formatted table item (line3)", function() {
-      expect(result[4]).toBe("| ok1 | 4 | 4 | 4 | OK |");
+      expect(result[4]).toBe("| ok1 | ^4 | 4 | ^4 | OK |");
     });
   });
 
