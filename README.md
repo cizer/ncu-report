@@ -41,13 +41,22 @@ Options:
   -h, --help                   output usage information
   -V, --version                output the version number
   -m, --packageManager <name>  npm (default) | bower
-  -o --outputFile <filename>   ./ncu-report/ncu-report.md (default)
-  -f --format <name>           markdown (default) | dokuwiki
-  -v --verbose                 verbose˜
+  -o, --outputFile <filename>   ./ncu-report/ncu-report.md (default)
+  -f, --format <name>           markdown (default) | dokuwiki
+  -v, --verbose                 verbose˜
 ````
+## Output Column Definitions
 
-Example Output
---------------
+| Column | Description |
+| :----- | :---------- |
+| Package | The name of the package |
+| Current | The current version specified in package.json or bower.json |
+| Installed | The locally installed version |
+| Latest | The latest version available from the remote repository |
+| Status | OK or OUTDATED |
+
+## Example Output
+
 | Package | Current | Installed | Latest | Status |
 | :------ | ------: | --------: | -----: | :----: |
 | bluebird | ^3.0.5 | 3.3.4 | ^3.3.5 | OUTDATED |
