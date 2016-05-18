@@ -26,7 +26,7 @@ $ ncu-report -m bower
 
 To output in dokuwiki format
 ````
-$ ncu-report -f docuwiki
+$ ncu-report -f dokuwiki
 ````
 
 To output to alternative filename
