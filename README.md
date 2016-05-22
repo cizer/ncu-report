@@ -1,6 +1,7 @@
 [![npm stable version](https://img.shields.io/npm/v/ncu-report.svg?label=npm)](https://npmjs.org/package/ncu-report)
 [![Build Status](https://travis-ci.org/cizer/ncu-report.svg?branch=master)](https://travis-ci.org/cizer/ncu-report)
 [![Dependency Status](https://david-dm.org/cizer/ncu-report.svg)](https://david-dm.org/cizer/ncu-report)
+[![devDependency Status](https://david-dm.org/cizer/ncu-report/dev-status.svg)](https://david-dm.org/cizer/ncu-report#info=devDependencies)
 
 # ncu-report
 A report generator that produces a table showing which packages require updating. The report is generated in markdown (and optionally dokuwiki) format and can be integrated into your build.

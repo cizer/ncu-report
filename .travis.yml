@@ -7,6 +7,9 @@ node_js:
 - '0.10'
 - iojs
 deploy:
+  on:
+    branch: master
+    tags: true
   provider: npm
   email: "richie.mackay@gmail.com"
   api_key:
