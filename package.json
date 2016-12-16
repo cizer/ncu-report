@@ -1,6 +1,6 @@
 {
   "name": "ncu-report",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A utility that formats the output of ncu in markdown format",
   "main": "./lib/index.js",
   "scripts": {
@@ -12,14 +12,14 @@
   "author": "Richie Mackay",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.9.0",
-    "dateformat": "^1.0.12",
-    "npm-check-updates": "^2.6.1",
-    "path": "^0.12.7"
+    "commander": "2.9.0",
+    "dateformat": "2.0.0",
+    "npm-check-updates": "2.8.8",
+    "path": "0.12.7"
   },
   "devDependencies": {
-    "istanbul": "^0.4.3",
-    "jasmine-node": "^1.14.5",
-    "proxyquire": "^1.7.4"
+    "istanbul": "0.4.5",
+    "jasmine-node": "1.14.5",
+    "proxyquire": "1.7.10"
   }
 }

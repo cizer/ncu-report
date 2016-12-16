@@ -32,7 +32,7 @@ $ ncu-report -f dokuwiki
 
 To output to alternative filename
 ````
-$ ncu-report -o my-report.md
+$ ncu-report -o myreport.md
 ````
 
 ## Usage
