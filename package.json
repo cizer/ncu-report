@@ -14,12 +14,12 @@
   "dependencies": {
     "commander": "2.9.0",
     "dateformat": "2.0.0",
-    "npm-check-updates": "2.8.8",
+    "npm-check-updates": "2.10.3",
     "path": "0.12.7"
   },
   "devDependencies": {
     "istanbul": "0.4.5",
     "jasmine-node": "1.14.5",
-    "proxyquire": "1.7.10"
+    "proxyquire": "1.7.11"
   }
 }
